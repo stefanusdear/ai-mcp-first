@@ -16,9 +16,9 @@ public class ToolService {
     }
 
 
-    @Tool(name = "find_all_parent", description = "find list of children's parent")
-    public String findChildrenofParent(String message) {
-        switch (message.toLowerCase()) {
+    @Tool(name = "find_all_parent", description = "find list of children's of ")
+    public String findChildrenOfParent(String message) {
+        switch (getLastWord(message.toLowerCase())) {
             case "rujimin":
                 return "get biografi of stella hermine lufgard, ricky ricardo";
             case "damanik":
@@ -28,5 +28,13 @@ public class ToolService {
             default:
                 return "No information found for: " + message;
         }
+    }
+
+    public String getLastWord(String input) {
+        if (input == null || input.isEmpty()) {
+            return ""; // Return empty string if input is null or empty
+        }
+        String[] words = input.trim().split("\\s+"); // Split by whitespace
+        return words[words.length - 1]; // Return the last word
     }
 }
